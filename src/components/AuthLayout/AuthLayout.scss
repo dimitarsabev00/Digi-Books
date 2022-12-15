@@ -1,0 +1,47 @@
+#container {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+
+  #content {
+    width: 42%;
+    min-width: 600px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    #logo {
+      margin-top: 13.5vh;
+      width: 350px;
+      height: auto;
+    }
+  }
+
+  img {
+    width: 58%;
+    min-width: 900px;
+    min-height: 100vh;
+  }
+}
+
+@media (max-width: 750px) {
+  #container {
+    overflow: hidden;
+    height: 100vh;
+    background-image: url("../../assets/cover.png");
+    #content {
+      display: flex;
+      width: 100%;
+      min-width: 150px;
+      #logo {
+        margin-top: 5vh;
+        width: 180px;
+        text-align: center;
+      }
+    }
+
+    img {
+      display: none;
+    }
+  }
+}
