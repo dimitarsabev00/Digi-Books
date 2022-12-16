@@ -65,6 +65,9 @@
         width: auto;
         color: #c2c2c2;
       }
+      .active {
+        color: base.$base-green;
+      }
     }
 
     #recover {
@@ -85,6 +88,7 @@
       color: #fff;
       font-weight: 700;
       opacity: 0.5;
+      cursor: pointer;
     }
   }
 
