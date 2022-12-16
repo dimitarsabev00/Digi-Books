@@ -41,7 +41,6 @@
         font-family: inherit;
         font-size: inherit;
         font-weight: 500;
-        // background-color: base.$base-white;
       }
 
       .password-field {
@@ -56,6 +55,9 @@
         height: 25px;
         width: auto;
         color: #c2c2c2;
+      }
+      .active {
+        color: base.$base-green;
       }
     }
 
@@ -76,7 +78,7 @@
       border: none;
       color: base.$base-white;
       font-weight: 700;
-      opacity: 0.5;
+      cursor: pointer;
     }
   }
 
