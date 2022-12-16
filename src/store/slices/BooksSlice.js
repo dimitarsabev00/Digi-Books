@@ -33,6 +33,16 @@ export const BooksSlice = createSlice({
     getSingleBookError: (state) => {
       state.singleBooksLoading = false;
     },
+    searchBooksRequesting: (state) => {
+      state.booksIsLoading = true;
+    },
+    searchBooksSuccess: (state, { payload }) => {
+      state.booksList = payload?.data;
+      state.booksIsLoading = false;
+    },
+    searchBooksError: (state) => {
+      state.booksIsLoading = false;
+    },
   },
 });
 
@@ -40,6 +50,9 @@ export const {
   getBooksRequesting,
   getBooksSuccess,
   getBooksError,
+  searchBooksRequesting,
+  searchBooksSuccess,
+  searchBooksError,
   getSingleBookRequesting,
   getSingleBookSuccess,
   getSingleBookError,
@@ -60,4 +73,13 @@ export const getBookDetails = (id) => async (dispatch) => {
     (error) => dispatch(getSingleBookError(error))
   );
 };
+
+export const searchBooks = (pattern) => async (dispatch) => {
+  dispatch(searchBooksRequesting());
+  axiosHelper.post("/book/search", { pattern }).then(
+    (response) => dispatch(searchBooksSuccess(response)),
+    (error) => dispatch(searchBooksError(error))
+  );
+};
+
 export default BooksSlice.reducer;
