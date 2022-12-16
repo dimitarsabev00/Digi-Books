@@ -8,8 +8,8 @@ function Settings() {
       <div className="settings-container">
         <h2>General Settings</h2>
         <div className="menu">
-          {generalSettings.map((title) => (
-            <MenuLine title={title} />
+          {generalSettings.map((title, index) => (
+            <MenuLine title={title} key={index} />
           ))}
         </div>
       </div>
@@ -20,8 +20,8 @@ function Settings() {
         </div>
 
         <div className="menu">
-          {bookSettings.map((title) => (
-            <MenuLine title={title} />
+          {bookSettings.map((title, index) => (
+            <MenuLine title={title} key={index} />
           ))}
         </div>
       </div>
