@@ -1,0 +1,97 @@
+@use "../../sassStyles/base";
+
+.details {
+  width: 95%;
+  height: 87%;
+  margin: 3vh auto;
+  display: flex;
+  align-items: center;
+
+  .image-container {
+    z-index: 2;
+    background-color: base.$base-white;
+    height: 100%;
+    width: 37%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 5px 15px #00347026;
+    border-radius: 5px;
+
+    img {
+      height: 90%;
+      max-width: 95%;
+      width: auto;
+      border-radius: 5px;
+    }
+  }
+
+  .book-data {
+    margin-left: -20px;
+    height: 74.8%;
+    flex: 1;
+    background-color: base.$base-white;
+    box-shadow: 0px 5px 15px #00347026;
+    border-radius: 5px;
+
+    .title-container {
+      width: 100%;
+      height: 13.3%;
+      background-color: base.$base-green;
+      border-radius: 5px;
+      padding-left: 60px;
+      display: flex;
+      align-items: center;
+
+      h1 {
+        font-size: 22px;
+        font-weight: bold;
+        color: base.$base-white;
+        text-transform: uppercase;
+      }
+    }
+
+    .body-details {
+      overflow: hidden;
+      margin-left: 60px;
+      margin-top: 2%;
+      margin-bottom: 2%;
+      height: 79.7%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 50px;
+
+      .general-info {
+        flex: 2;
+        font-size: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 30px;
+
+        .author-details {
+          font-weight: bold;
+          font-size: 20px;
+          color: base.$base-blue;
+        }
+
+        .span-details {
+          font-weight: bold;
+        }
+      }
+      .description {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        font-size: 16px;
+        gap: 1px;
+        width: 90%;
+        h3 {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
