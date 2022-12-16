@@ -6,34 +6,44 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import HomePage from "./components/HomePage/HomePage";
 import Settings from "./components/Settings/Settings";
+import RequireAuth from "./components/RequireAuth";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Navigate to={"home"} replace />} />
-      <Route
-        path="/login"
-        element={
-          <AuthLayout>
-            <Login />
-          </AuthLayout>
-        }
-      />
-      <Route
-        path="/register"
-        element={
-          <AuthLayout>
-            <Register />
-          </AuthLayout>
-        }
-      />
-      <Route path={"/home"} element={<AppLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="settings" element={<Settings />} />
-      </Route>
+    <>
+      <Routes>
+        <Route path="/" element={<Navigate to={"home"} replace />} />
+        <Route
+          path="/login"
+          element={
+            <AuthLayout>
+              <Login />
+            </AuthLayout>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <AuthLayout>
+              <Register />
+            </AuthLayout>
+          }
+        />
+        <Route
+          path={"/home"}
+          element={
+            <RequireAuth>
+              <AppLayout />
+            </RequireAuth>
+          }
+        >
+          <Route index element={<HomePage />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
 
-      <Route path="*" element={<div>There's no page here</div>} />
-    </Routes>
+        <Route path="*" element={<div>There's no page here</div>} />
+      </Routes>
+    </>
   );
 }
 
