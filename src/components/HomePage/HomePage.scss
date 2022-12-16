@@ -1,0 +1,52 @@
+@use "../../sassStyles/base";
+
+.outlet-container {
+  width: 95%;
+  height: 87%;
+  margin: 3vh auto;
+  background-color: base.$base-white;
+  box-shadow: 0px 5px 15px #00347026;
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+
+  .content-container {
+    #search-form {
+      display: flex;
+      align-items: center;
+
+      label {
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      input {
+        height: 42px;
+        width: 500px;
+
+        margin-left: 20px;
+        padding-left: 8px;
+
+        border: 0.2px solid base.$base-black;
+        border-radius: 5px;
+
+        font-family: inherit;
+        font-size: inherit;
+      }
+
+      #search-icon {
+        margin-left: -32px;
+        margin-bottom: -5px;
+      }
+    }
+
+    #book-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 40px;
+      gap: 47px;
+    }
+  }
+}
