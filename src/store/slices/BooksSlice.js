@@ -16,7 +16,7 @@ export const BooksSlice = createSlice({
       state.booksIsLoading = true;
     },
     getBooksSuccess: (state, { payload }) => {
-      state.booksList = payload?.data;
+      state.booksList = payload;
       state.booksIsLoading = false;
     },
     getBooksError: (state) => {
@@ -27,7 +27,7 @@ export const BooksSlice = createSlice({
       state.singleBooksLoading = true;
     },
     getSingleBookSuccess: (state, { payload }) => {
-      state.singleBook = payload?.data;
+      state.singleBook = payload;
       state.singleBooksLoading = false;
     },
     getSingleBookError: (state) => {
@@ -37,7 +37,7 @@ export const BooksSlice = createSlice({
       state.booksIsLoading = true;
     },
     searchBooksSuccess: (state, { payload }) => {
-      state.booksList = payload?.data;
+      state.booksList = payload;
       state.booksIsLoading = false;
     },
     searchBooksError: (state) => {
@@ -61,7 +61,7 @@ export const {
 export const getAllBooks = () => async (dispatch) => {
   dispatch(getBooksRequesting());
   axiosHelper.get("/book").then(
-    (response) => dispatch(getBooksSuccess(response)),
+    (response) => dispatch(getBooksSuccess(response.data)),
     (error) => dispatch(getBooksError(error))
   );
 };
@@ -69,7 +69,7 @@ export const getAllBooks = () => async (dispatch) => {
 export const getBookDetails = (id) => async (dispatch) => {
   dispatch(getSingleBookRequesting());
   axiosHelper.get(`/book/${id}`).then(
-    (response) => dispatch(getSingleBookSuccess(response)),
+    (response) => dispatch(getSingleBookSuccess(response.data)),
     (error) => dispatch(getSingleBookError(error))
   );
 };
@@ -77,7 +77,7 @@ export const getBookDetails = (id) => async (dispatch) => {
 export const searchBooks = (pattern) => async (dispatch) => {
   dispatch(searchBooksRequesting());
   axiosHelper.post("/book/search", { pattern }).then(
-    (response) => dispatch(searchBooksSuccess(response)),
+    (response) => dispatch(searchBooksSuccess(response.data)),
     (error) => dispatch(searchBooksError(error))
   );
 };

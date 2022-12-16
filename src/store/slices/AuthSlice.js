@@ -19,7 +19,7 @@ export const AuthSlice = createSlice({
       state.loginIsLoading = true;
     },
     loginSuccess: (state, { payload }) => {
-      const token = payload?.data?.token;
+      const token = payload;
       localStorage.setItem("token", token);
       state.isAuthenticated = true;
       state.loginIsLoading = false;
@@ -71,7 +71,7 @@ export const signIn = (data, navigate) => async (dispatch) => {
   dispatch(loginRequesting());
   axiosHelper.post("/user/login", data).then(
     (response) => {
-      dispatch(loginSuccess(response));
+      dispatch(loginSuccess(response.data.token));
       if (navigate) {
         navigate("/");
       }
@@ -85,7 +85,7 @@ export const signUp = (data, navigate) => async (dispatch) => {
   dispatch(registerRequesting());
   axiosHelper.post("/user/register", data).then(
     (response) => {
-      dispatch(registerSuccess(response));
+      dispatch(registerSuccess(response.data.token));
       if (navigate) {
         navigate("/login");
       }
@@ -97,7 +97,7 @@ export const signUp = (data, navigate) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   axiosHelper
     .post("/user/logout")
-    .then((response) => dispatch(logoutSuccess(response)));
+    .then((response) => dispatch(logoutSuccess(response.data.token)));
 };
 
 export default AuthSlice.reducer;
