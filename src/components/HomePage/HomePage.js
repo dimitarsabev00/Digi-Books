@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getAllBooks, searchBooks } from "../../store/slices/BooksSlice";
 import { useDispatch, useSelector } from "react-redux";
 import BookCard from "../BookCard/BookCard";
+import { TailSpin } from "react-loader-spinner";
 function HomePage() {
   const [pattern, setPattern] = useState("");
   const [searchLabel, setSearchLabel] = useState("All BOOKS");
@@ -40,12 +41,26 @@ function HomePage() {
             <SearchIcon id="search-icon" />
           </div>
         </div>
-
-        <div id="book-grid">
-          {booksList?.map((book) => (
-            <BookCard key={book._id} {...book} />
-          ))}
-        </div>
+        {!booksIsLoading ? (
+          <div id="book-grid">
+            {booksList?.map((book) => (
+              <BookCard key={book._id} {...book} />
+            ))}
+          </div>
+        ) : (
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <TailSpin
+              height="80"
+              width="80"
+              color="#08c642"
+              ariaLabel="tail-spin-loading"
+              radius="1"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
