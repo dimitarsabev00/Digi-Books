@@ -33,6 +33,12 @@
 
   a {
     text-decoration: none;
+    .back-btn {
+      display: flex;
+      align-items: center;
+      color: base.$base-black;
+      gap: 18px;
+    }
   }
 
   #links {
