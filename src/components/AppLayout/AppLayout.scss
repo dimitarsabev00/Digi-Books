@@ -1,0 +1,73 @@
+@use "../../sassStyles/base";
+
+#page {
+  background-color: #fafafa;
+  height: 100vh;
+}
+
+#nav-background {
+  width: 100%;
+  height: 63px;
+  background-color: base.$base-white;
+  box-shadow: 0px 3px 6px #00000029;
+}
+
+.container {
+  width: 95%;
+  height: 100%;
+  margin: auto;
+}
+
+#navbar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  #logo {
+    height: 45%;
+    width: auto;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  #links {
+    height: 100%;
+    width: 13%;
+    min-width: 150px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-left: -5%;
+  }
+
+  .edge-container {
+    width: 7.2%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    svg {
+      cursor: pointer;
+    }
+  }
+}
+
+.link-container {
+  display: flex;
+  align-items: center;
+
+  text-transform: uppercase;
+  text-decoration: none;
+  color: base.$base-black;
+}
+
+.active {
+  border-bottom: 5px solid base.$base-green;
+  font-weight: bold;
+}
