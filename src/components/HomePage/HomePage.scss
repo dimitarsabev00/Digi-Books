@@ -10,6 +10,8 @@
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 20px;
+  padding-bottom: 50px;
+  overflow-y: scroll;
 
   .content-container {
     #search-form {
@@ -49,4 +51,18 @@
       gap: 47px;
     }
   }
+}
+
+::-webkit-scrollbar {
+  width: 6.93px;
+  height: 99.79px;
+}
+
+::-webkit-scrollbar-track {
+  background: base.$base-white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: base.$base-black;
+  border-radius: 3px;
 }
