@@ -48,7 +48,13 @@ function HomePage() {
             ))}
           </div>
         ) : (
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "3rem",
+            }}
+          >
             <TailSpin
               height="80"
               width="80"

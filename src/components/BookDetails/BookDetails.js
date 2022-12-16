@@ -86,7 +86,7 @@ function BookDetails() {
           style={{
             display: "flex",
             justifyContent: "center",
-            marginTop: "3rem",
+            marginTop: "6.5rem",
           }}
         >
           <TailSpin
