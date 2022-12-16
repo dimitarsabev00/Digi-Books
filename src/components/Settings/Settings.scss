@@ -1,0 +1,52 @@
+@use "../../sassStyles/base";
+
+.settings {
+  display: flex;
+  gap: 40px;
+  width: 95%;
+  height: 87%;
+  margin: 3vh auto;
+
+  .settings-container {
+    height: 100%;
+    flex: 1;
+    box-shadow: 0px 5px 15px #00347026;
+    border-radius: 5px;
+    background-color: base.$base-white;
+    padding-left: 23px;
+    padding-right: 13px;
+    padding-top: 22px;
+
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 10px 0;
+    }
+
+    .menu {
+      margin-top: 55px;
+      display: flex;
+      flex-direction: column;
+      gap: 39px;
+    }
+
+    .title-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      button {
+        width: 150px;
+        height: 42px;
+        border: none;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 5px;
+        background-color: base.$base-green;
+        color: base.$base-white;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+  }
+}

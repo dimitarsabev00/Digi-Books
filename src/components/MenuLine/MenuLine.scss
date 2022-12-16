@@ -1,0 +1,31 @@
+@use "../../sassStyles/base";
+
+.line-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  div {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    hr {
+      flex: 1;
+      border-top: 1px solid base.$base-blue;
+      margin-right: -5px;
+      margin-left: 30px;
+      color: base.$base-blue;
+    }
+
+    svg {
+      color: base.$base-blue;
+      height: 22px;
+      width: auto;
+    }
+  }
+}
