@@ -6,11 +6,6 @@ import { useNavigate } from "react-router-dom";
 function BookCard({ name, author, createOn, genre, image, lastUpdateOn, _id }) {
   const navigate = useNavigate();
 
-  function handleNavigationToDeatails() {
-    const url = `/details/${_id}`;
-    navigate(url, { state: _id });
-  }
-
   function formatDate(inputDate) {
     const date = new Date(inputDate);
     return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
@@ -37,7 +32,11 @@ function BookCard({ name, author, createOn, genre, image, lastUpdateOn, _id }) {
         </div>
       </div>
 
-      <button onClick={handleNavigationToDeatails}>
+      <button
+        onClick={() => {
+          navigate(`/details/${_id}`);
+        }}
+      >
         <IoPlay className="play-icon" />
       </button>
     </div>
