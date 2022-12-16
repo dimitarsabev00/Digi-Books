@@ -5,6 +5,7 @@ import AuthLayout from "./components/AuthLayout/AuthLayout";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import HomePage from "./components/HomePage/HomePage";
+import Settings from "./components/Settings/Settings";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       />
       <Route path={"/home"} element={<AppLayout />}>
         <Route index element={<HomePage />} />
+        <Route path="settings" element={<Settings />} />
       </Route>
 
       <Route path="*" element={<div>There's no page here</div>} />
