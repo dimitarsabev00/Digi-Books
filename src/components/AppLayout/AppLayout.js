@@ -4,8 +4,11 @@ import { Outlet } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { ReactComponent as ProfileIcon } from "../../assets/profile.svg";
 import CustomLink from "../CustomLink/CustomLink";
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/slices/AuthSlice";
 
 function AppLayout() {
+  const dispatch = useDispatch();
   return (
     <div id="page">
       <div id="nav-background">
@@ -19,7 +22,7 @@ function AppLayout() {
               <CustomLink to={"/home/settings"}>Settings</CustomLink>
             </nav>
             <div className="edge-container">
-              <ProfileIcon id="profile" />
+              <ProfileIcon id="profile" onClick={() => dispatch(logout())} />
             </div>
           </div>
         </div>
