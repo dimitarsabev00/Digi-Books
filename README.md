@@ -1,23 +1,24 @@
-# React Task #
+### Open Project - [https://digi-books.vercel.app/login](https://digi-books.vercel.app/login)
+
+# React Task
 
 1. Fork this repository into your account (public)
 2. Create a responsive web application from the provided design and integrate it with an existing API.
 3. Push changes as you progress through the task
 
-#### Tips ###
+#### Tips
 
 Creating a react-app: https://reactjs.org/docs/create-a-new-react-app.html
 
 Use 'react-router' as a navigation tool: https://reactrouter.com
 
-
-#### Additional information ###
+#### Additional information
 
 "Settings" page and "Recover password" button are solely with a visual purpose.
 
 "Short description" for the books is not provided in the API response, please use sample text there.
 
-# Design #
+# Design
 
 Desktop: https://xd.adobe.com/view/b01c49ef-1e0f-4052-85c4-4b49dc22e8a7-e54f/specs/
 
@@ -27,12 +28,11 @@ Font: https://fonts.google.com/specimen/Montserrat
 
 All other assets can be acquired from the provided XD files.
 
-
-# API #
+# API
 
 URL: https://books-library-dev.herokuapp.com
 
-Header example: 
+Header example:
 
 ```JSON
  'Content-Type': 'application/json',
@@ -40,10 +40,13 @@ Header example:
 ```
 
 ### Endpoints
-#### __/api/book__
+
+#### **/api/book**
+
 - Method - GET
 - Authentication: YES
 - Get all books in library
+
 ```JSON
 [
   {
@@ -72,11 +75,14 @@ Header example:
   },
 ]
 ```
-#### __/api/book/:id__
+
+#### **/api/book/:id**
+
 - Method - GET
 - Authentication: YES
 - Get single book by id
 - Example param: 61674f8b97652408ce5edc3c
+
 ```JSON
 {
   "_id": "61674f8b97652408ce5edc3c",
@@ -91,14 +97,18 @@ Header example:
   }
 }
 ```
-#### __/api/book/search__
+
+#### **/api/book/search**
+
 - Method - POST
 - Authentication: YES
 - Search for match in books names (titles)
 - Example body
+
 ```JSON
 { "pattern": "catch" //keyword (not case sensitive) }
 ```
+
 ```JSON
 [
   {
@@ -115,10 +125,13 @@ Header example:
   },
 ]
 ```
-#### __/api/genre/__
+
+#### **/api/genre/**
+
 - Method - GET
 - Authentication: YES
 - Get all genres in library
+
 ```JSON
 [
   {
@@ -135,11 +148,14 @@ Header example:
   }
 ]
 ```
-#### __/api/genre/:id__
+
+#### **/api/genre/:id**
+
 - Method - GET
 - Authentication: YES
 - Get all books from this genre
 - Example param: 61671fea3b3d39971f0e94c4
+
 ```JSON
 [
   {
@@ -168,14 +184,18 @@ Header example:
   }
 ]
 ```
-#### __/api/genre/search__
+
+#### **/api/genre/search**
+
 - Method - POST
 - Authentication: YES
 - Search for match in genres name
 - Example body
+
 ```JSON
 { "pattern": "c" //keyword (not case sensitive) }
 ```
+
 ```JSON
 [
   {
@@ -204,35 +224,45 @@ Header example:
   }
 ]
 ```
-#### __/api/user/register__
+
+#### **/api/user/register**
+
 - Method - POST
 - Authentication: NO
 - Register new user
 - Example body
+
 ```JSON
 {
   "username": "elka",     // String with min 4 symbols, no special symbols, except _
   "password": "123456"    // String with min 6 symbols, no special symbols
 }
 ```
-#### __/api/user/login__
+
+#### **/api/user/login**
+
 - Method - POST
 - Authentication: NO
 - Login to system
 - Example body
+
 ```JSON
 {
   "username": "elka",     // String with min 4 symbols, no special symbols, except _
   "password": "123456"    // String with min 6 symbols, no special symbols
 }
 ```
+
 Result is JWT token
+
 ```JSON
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNjgyZmI4NjgwMzZjN2JjMGQyMTA1MSIsInVzZXJuYW1lIjoiZWxrYSIsImlhdCI6MTYzNDIzMTg2MiwiZXhwIjoxNjM0MzE4MjYyfQ.AVa7-SbPgSynSO39oxqlQi8TCJiBrhu89lEqG47KSds"
 }
 ```
-#### __/api/user/logout__
+
+#### **/api/user/logout**
+
 - Method - POST
 - Authentication: YES
 - Logout from system
