@@ -50,3 +50,19 @@
     }
   }
 }
+
+@media (max-width: 800px) {
+  .settings {
+    flex-direction: column;
+
+    .settings-container {
+      padding: 12px;
+      padding-bottom: 30px;
+
+      .menu {
+        margin-top: 45px;
+        gap: 35px;
+      }
+    }
+  }
+}

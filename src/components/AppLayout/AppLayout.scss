@@ -26,6 +26,14 @@
   justify-content: space-between;
   align-items: center;
 
+  .ham-menu-icon {
+    display: none;
+    width: auto;
+    height: 35px;
+    color: base.$base-green;
+    cursor: pointer;
+  }
+
   #logo {
     height: 45%;
     width: auto;
@@ -76,4 +84,47 @@
 .active {
   border-bottom: 5px solid base.$base-green;
   font-weight: bold;
+  width: 74px;
+}
+
+#links-ham {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  page {
+    background-color: base.$base-white;
+  }
+  #navbar {
+    .ham-menu-icon {
+      display: block;
+    }
+    #links {
+      display: none;
+    }
+  }
+
+  #links-ham {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 240px;
+    position: relative;
+    z-index: 5;
+    background-color: base.$base-white;
+    padding-right: 82%;
+    padding-left: 5%;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    a {
+      padding-bottom: 5px;
+    }
+  }
+  .back-btn {
+    display: flex;
+    align-items: center;
+    color: base.$base-black;
+    gap: 12px;
+    margin: 18px;
+  }
 }
