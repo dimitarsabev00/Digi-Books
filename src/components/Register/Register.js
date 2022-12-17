@@ -4,24 +4,36 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoMdEye } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../../store/slices/AuthSlice";
+import { toast } from "react-toastify";
 
 function Register() {
-  const [password, setPassword] = useState({ isVisable: false });
-  const [passwordConfirm, setPasswordConfirm] = useState({
-    value: "",
-    isVisable: false,
-  });
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [passwordIsVisible, setPasswordIsVisible] = useState(false);
+  const [passwordConfirmIsVisible, setPasswordConfirmIsVisible] =
+    useState(false);
+  const [passwordMatches, setPasswordMatches] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const registerIsLoading = useSelector(
     ({ authState: { registerIsLoading } }) => registerIsLoading
   );
 
+  const canSubmit = Boolean(
+    username?.length > 0 && password?.length > 0 && passwordConfirm?.length > 0
+  );
   const handleRegister = (e) => {
     e.preventDefault();
-    const username = e.target[0].value;
-    const password = e.target[1].value;
-    dispatch(signUp({ username, password }, navigate));
+
+    if (password === passwordConfirm) {
+      setPasswordMatches(true);
+      if (passwordMatches && username) {
+        dispatch(signUp({ username, password }, navigate));
+      }
+    } else {
+      toast.error("Password not matched! Please try again");
+    }
   };
 
   return (
@@ -31,23 +43,29 @@ function Register() {
       <form onSubmit={handleRegister}>
         <div className="form-element">
           <label htmlFor="username">Username</label>
-          <input type="text" id="username" />
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          />
         </div>
         <div className="form-element">
           <label htmlFor="password">Password</label>
           <div className="password-field">
             <input
-              type={password.isVisable ? "input" : "password"}
+              type={passwordIsVisible ? "input" : "password"}
               id="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
             <IoMdEye
-              className={`eye-icon ${password.isVisable ? "active" : ""}`}
-              onClick={() =>
-                setPassword((prev) => ({
-                  ...prev,
-                  isVisable: !prev.isVisable,
-                }))
-              }
+              className={`eye-icon ${passwordIsVisible ? "active" : ""}`}
+              onClick={() => setPasswordIsVisible(!passwordIsVisible)}
             />
           </div>
         </div>
@@ -55,24 +73,26 @@ function Register() {
           <label htmlFor="password-confirm">Repeat password</label>
           <div className="password-field">
             <input
-              type={passwordConfirm.isVisable ? "input" : "password"}
+              type={passwordConfirmIsVisible ? "input" : "password"}
               id="password-confirm"
+              value={passwordConfirm}
+              onChange={(e) => {
+                setPasswordConfirm(e.target.value);
+              }}
             />
+
             <IoMdEye
-              className={`eye-icon ${
-                passwordConfirm.isVisable ? "active" : ""
-              }`}
+              className={`eye-icon ${passwordConfirmIsVisible ? "active" : ""}`}
               onClick={() =>
-                setPasswordConfirm((prev) => ({
-                  ...prev,
-                  isVisable: !prev.isVisable,
-                }))
+                setPasswordConfirmIsVisible(!passwordConfirmIsVisible)
               }
             />
           </div>
         </div>
 
-        <button type="submit">SIGN UP</button>
+        <button type="submit" className={canSubmit ? "active" : ""}>
+          SIGN UP
+        </button>
       </form>
       <p id="alternative-access">
         You have an account? <Link to="/login">LOG IN HERE</Link>
