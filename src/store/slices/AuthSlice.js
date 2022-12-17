@@ -23,6 +23,7 @@ export const AuthSlice = createSlice({
       localStorage.setItem("token", token);
       state.isAuthenticated = true;
       state.loginIsLoading = false;
+
       toast.success("You have been logged in successfully!");
     },
     loginError: (state) => {
@@ -34,7 +35,7 @@ export const AuthSlice = createSlice({
     registerSuccess: (state, { payload }) => {
       state.registerIsLoading = false;
 
-      const successMessage = payload?.data?.message;
+      const successMessage = payload;
 
       if (successMessage) {
         toast.success(successMessage);
@@ -48,7 +49,7 @@ export const AuthSlice = createSlice({
       state.token = "";
       localStorage.removeItem("token");
 
-      const successMessage = payload?.data?.message;
+      const successMessage = payload;
 
       if (successMessage) {
         toast.success(successMessage);
@@ -71,7 +72,8 @@ export const signIn = (data, navigate) => async (dispatch) => {
   dispatch(loginRequesting());
   axiosHelper.post("/user/login", data).then(
     (response) => {
-      dispatch(loginSuccess(response.data.token));
+      dispatch(loginSuccess(response?.data?.token));
+
       if (navigate) {
         navigate("/");
       }
@@ -85,7 +87,7 @@ export const signUp = (data, navigate) => async (dispatch) => {
   dispatch(registerRequesting());
   axiosHelper.post("/user/register", data).then(
     (response) => {
-      dispatch(registerSuccess(response.data.token));
+      dispatch(registerSuccess(response?.data?.message));
       if (navigate) {
         navigate("/login");
       }
@@ -97,7 +99,7 @@ export const signUp = (data, navigate) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   axiosHelper
     .post("/user/logout")
-    .then((response) => dispatch(logoutSuccess(response.data.token)));
+    .then((response) => dispatch(logoutSuccess(response?.data?.message)));
 };
 
 export default AuthSlice.reducer;
