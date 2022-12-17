@@ -25,6 +25,8 @@ function HomePage() {
       dispatch(getAllBooks());
     }
   }, [pattern]);
+
+  const notFoundBook = Boolean(booksList.length === 0);
   return (
     <div className="outlet-container">
       <div className="content-container">
@@ -42,11 +44,17 @@ function HomePage() {
           </div>
         </div>
         {!booksIsLoading ? (
-          <div id="book-grid">
-            {booksList?.map((book) => (
-              <BookCard key={book._id} {...book} />
-            ))}
-          </div>
+          <>
+            {!notFoundBook ? (
+              <div id="book-grid">
+                {booksList?.map((book) => (
+                  <BookCard key={book._id} {...book} />
+                ))}
+              </div>
+            ) : (
+              <div>Books Not Found</div> //styling this div!!!
+            )}
+          </>
         ) : (
           <div
             style={{
