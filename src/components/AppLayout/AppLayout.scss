@@ -84,7 +84,7 @@
 .active {
   border-bottom: 5px solid base.$base-green;
   font-weight: bold;
-  width: 74px;
+  width: 100%;
 }
 
 #links-ham {
@@ -112,12 +112,13 @@
     position: relative;
     z-index: 5;
     background-color: base.$base-white;
-    padding-right: 82%;
+    // padding-right: 82%;
     padding-left: 5%;
     padding-top: 40px;
     padding-bottom: 50px;
     a {
       padding-bottom: 5px;
+      width: 82px;
     }
   }
   .back-btn {
