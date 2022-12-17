@@ -58,6 +58,7 @@
       }
       .active {
         color: base.$base-green;
+        border: none;
       }
     }
 
@@ -90,6 +91,36 @@
       color: base.$base-blue;
       font-size: 16px;
       font-weight: 700;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  #login-form {
+    width: 90%;
+    background-color: base.$base-white;
+    opacity: 0.85;
+    border-radius: 8px;
+    margin-top: 15vh;
+    padding-top: 3.8vh;
+    padding-bottom: 4.3vh;
+
+    h1 {
+      margin-bottom: 0px;
+    }
+    form {
+      align-items: center;
+      .form-element {
+        width: 92.5%;
+      }
+
+      #recover {
+        margin-right: 3.75%;
+      }
+
+      button {
+        width: 92.5%;
+      }
     }
   }
 }
