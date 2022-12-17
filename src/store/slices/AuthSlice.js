@@ -79,7 +79,7 @@ export const signIn = (data, navigate) => async (dispatch) => {
       }
     },
 
-    (error) => dispatch(loginError(error))
+    (error) => dispatch(loginError(error.message))
   );
 };
 
