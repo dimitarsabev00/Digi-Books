@@ -1,4 +1,15 @@
+# Digi Books
+
 ### Open Project - [https://digi-books.vercel.app/login](https://digi-books.vercel.app/login)
+
+## In the project directory, you can run:
+
+### `npm install` - install npm package
+
+### `npm start` - run project
+
+Runs the app in the development mode.
+Open http://localhost:3000/ to view it in your browser.
 
 # React Task
 
