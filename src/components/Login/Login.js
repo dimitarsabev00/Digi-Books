@@ -6,18 +6,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../../store/slices/AuthSlice";
 
 function LoginForm() {
-  const [password, setPassword] = useState({ isVisable: false });
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordIsVisible, setPasswordIsVisible] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const loginIsLoading = useSelector(
     ({ authState: { loginIsLoading } }) => loginIsLoading
   );
-
+  const canSubmit = Boolean(username?.length > 0 && password?.length > 0);
   const handleLogin = (e) => {
     e.preventDefault();
-    const username = e.target[0].value;
-    const password = e.target[1].value;
-    dispatch(signIn({ username, password }, navigate));
+    if (password && username) {
+      dispatch(signIn({ username, password }, navigate));
+    }
   };
   return (
     <div id="login-form">
@@ -25,24 +28,29 @@ function LoginForm() {
       <form onSubmit={handleLogin}>
         <div className="form-element">
           <label htmlFor="username">Username</label>
-          <input type="text" id="username" />
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          />
         </div>
         <div className="form-element">
           <label htmlFor="password">Password</label>
           <div className="password-field">
             <input
-              type={password.isVisable ? "input" : "password"}
+              type={passwordIsVisible ? "input" : "password"}
               id="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
             <IoMdEye
-              id="eye-icon"
-              className={password.isVisable ? "active" : ""}
-              onClick={() =>
-                setPassword((prev) => ({
-                  ...prev,
-                  isVisable: !prev.isVisable,
-                }))
-              }
+              className={`eye-icon ${passwordIsVisible ? "active" : ""}`}
+              onClick={() => setPasswordIsVisible(!passwordIsVisible)}
             />
           </div>
         </div>
@@ -50,7 +58,9 @@ function LoginForm() {
           Recover password
         </a>
 
-        <button type="submit">LOG IN</button>
+        <button type="submit" className={canSubmit ? "active" : ""}>
+          LOG IN
+        </button>
       </form>
       <p id="alternative-access">
         You don’t have an account? <Link to="/register">SIGN UP HERE</Link>

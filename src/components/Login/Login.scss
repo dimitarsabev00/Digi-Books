@@ -79,7 +79,11 @@
       border: none;
       color: base.$base-white;
       font-weight: 700;
+      opacity: 0.5;
+    }
+    .active {
       cursor: pointer;
+      opacity: 1;
     }
   }
 
