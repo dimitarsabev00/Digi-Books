@@ -52,7 +52,7 @@ function HomePage() {
                 ))}
               </div>
             ) : (
-              <div>Books Not Found</div> //styling this div!!!
+              <div className="books-not-found">Books Not Found</div>
             )}
           </>
         ) : (
